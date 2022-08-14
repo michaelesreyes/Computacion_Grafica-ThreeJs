@@ -17,14 +17,15 @@ gh repo clone michaelesreyes/Computacion_Grafica-ThreeJs
 
 ```javascript
 
-    //can you change this lines
+//can you change this lines
 
-    const geometry = new THREE.BoxGeometry( 2, 2, 2 );
-    const material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
-    cube = new THREE.Mesh( geometry, material );
-    scene.add( cube );
+const geometry = new THREE.BoxGeometry( 2, 2, 2 );
+const material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+cube = new THREE.Mesh( geometry, material );
+scene.add( cube );
 
-    camera.position.z = 5;
+camera.position.z = 5;
+
 ```
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
