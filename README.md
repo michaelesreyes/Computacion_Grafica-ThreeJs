@@ -6,7 +6,7 @@ This repository is the most concrete way to collect the information seen in the 
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+Use the git clone [git](https://git-scm.com/docs/git-clone) to dowload Computacion_Grafica-ThreeJs.
 
 ```bash
 gh repo clone michaelesreyes/Computacion_Grafica-ThreeJs
@@ -14,17 +14,17 @@ gh repo clone michaelesreyes/Computacion_Grafica-ThreeJs
 
 ## Usage
 
-```python
-import foobar
+```javascript
 
-# returns 'words'
-foobar.pluralize('word')
+    //can you change this lines
 
-# returns 'geese'
-foobar.pluralize('goose')
+    const geometry = new THREE.BoxGeometry( 2, 2, 2 );
+    const material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+    cube = new THREE.Mesh( geometry, material );
+    scene.add( cube );
 
-# returns 'phenomenon'
-foobar.singularize('phenomena')
+    camera.position.z = 5;
+
 ```
 
 ## Contributing
