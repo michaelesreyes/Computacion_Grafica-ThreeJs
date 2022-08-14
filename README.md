@@ -6,11 +6,7 @@ This repository is the most concrete way to collect the information seen in the 
 
 ## Installation
 
-<<<<<<< HEAD
 Use the git clone [git](https://git-scm.com/docs/git-clone) to dowload Computacion_Grafica-ThreeJs.
-=======
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
->>>>>>> 464b186049e52ed24fe81dbe409a5cf806d947f3
 
 ```bash
 gh repo clone michaelesreyes/Computacion_Grafica-ThreeJs
@@ -18,7 +14,7 @@ gh repo clone michaelesreyes/Computacion_Grafica-ThreeJs
 
 ## Usage
 
-<<<<<<< HEAD
+
 ```javascript
 
     //can you change this lines
@@ -29,22 +25,7 @@ gh repo clone michaelesreyes/Computacion_Grafica-ThreeJs
     scene.add( cube );
 
     camera.position.z = 5;
-
-=======
-```python
-import foobar
-
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
->>>>>>> 464b186049e52ed24fe81dbe409a5cf806d947f3
 ```
-
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
