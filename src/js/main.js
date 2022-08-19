@@ -1,7 +1,7 @@
     /*
         Author(a): Michael Estiven Reyes Escobar
         Date of creation: 11/Agust/2022
-        Date of last modification: 11/Agust/2022 -12:03 AM
+        Date of last modification: 18/Agust/2022 -12:03 AM
     */
 
 //definiciones de los elementos que puedo crear
@@ -25,18 +25,26 @@ function start(){
     animate();
 }
 
+function onWindowResize(){
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+}
+
 function initScene(){
     //Scene, Camera, Render
     //create Scene
 
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0x000000);
+
     //3D Camera
     camera = new THREE.PerspectiveCamera( 75 //FOV (Field of View)
         , window.innerWidth / window.innerHeight //Aspect Ratio (Ratio of the screen)
         , 0.1 //NEAR (Near clipping plane)
         , 1000 // FAR (Far clipping plane)
         );
+
     //TO RENDER
     const canvas = document.querySelector('.webgl');
 
@@ -46,26 +54,71 @@ function initScene(){
 
     scene.add(camera);
 
-    //*********************************
-    //*********************************
+    controls = new THREE.OrbitControls(camera, renderer.domElement); //Controlador de la camara
+    camera.position.set(1,2,0); //Posicion de la camara en el espacio
 
-    const geometry = new THREE.BoxGeometry( 2, 2, 2 );
-    const material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
-    cube = new THREE.Mesh( geometry, material );
-    scene.add( cube );
+    const size = 100;
+    const divisions = 100;
 
-    camera.position.z = 5;
+    const gridHelper = new THREE.GridHelper( size, divisions );
+    scene.add( gridHelper ); //creacion del grid helper
 
-    //*********************************
-    //*********************************
+    //----------------------------------------------
+    //----------------------------------------------
+
+    //----------------------------------------------
+    //----------------------------------------------
+    window.addEventListener( 'resize', onWindowResize, false );
+}
+
+function getValues(objects2Create){
+
+    
+
+    let datas = document.querySelectorAll('input');
+
+    switch (objects2Create) {
+
+        case 'Box':
+
+            const geometry = new THREE.BoxGeometry( datas[0].value, datas[1].value, datas[2].value );
+            const material = new THREE.MeshBasicMaterial( { color: datas[3].value } );
+            cube = new THREE.Mesh( geometry, material );
+            scene.add( cube );
+
+            scene.add( cube );
+
+            break;
+
+        case 'Cylinder':
+
+            geometry = new THREE.CylinderGeometry( datas[0].value, datas[1].value, datas[2].value, 1 );
+            material = new THREE.MeshBasicMaterial( { color: datas[3].value } );
+            const cylinder = new THREE.Mesh( geometry, material );
+            scene.add( cylinder );
+
+            break;
+
+        case 'Sphere':
+
+            geometry = new THREE.SphereGeometry( datas[0].value, datas[1].value, datas[2].value );
+            material = new THREE.MeshBasicMaterial( { color: datas[3].value } );
+            const sphere = new THREE.Mesh( geometry, material );
+            scene.add( sphere );
+
+            break;
+
+        default:
+            break;
+    }
 }
 
 function animate(){
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
 
-    cube.rotation.x += 0.1;
-    cube.rotation.y += 0.1;
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
 }
 
 start();
