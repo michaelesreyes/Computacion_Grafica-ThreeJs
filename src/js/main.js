@@ -1,7 +1,7 @@
     /*
         Author(a): Michael Estiven Reyes Escobar
         Date of creation: 11/Agust/2022
-        Date of last modification: 18/Agust/2022 -12:03 AM
+        Date of last modification: 25/Agust/2022 -6:33 PM
     */
 
 //definiciones de los elementos que puedo crear
@@ -21,6 +21,9 @@ var scene = null, //La composicion de todos los objetos de la escena (The compos
     cube = null,
     box = null,
     sphere= null,
+    cicle = null,
+    cylinder = null,
+    Bar = null,
     color = null; //El cubo que se utiliza para representar la escena (representar la escena)
 
 function start(){
@@ -58,7 +61,7 @@ function initScene(){
     scene.add(camera);
 
     controls = new THREE.OrbitControls(camera, renderer.domElement); //Controlador de la camara
-    camera.position.set(1,2,0); //Posicion de la camara en el espacio
+    camera.position.set(-1,2,-1); //Posicion de la camara en el espacio
 
     const size = 100;
     const divisions = 100;
@@ -77,33 +80,41 @@ function initScene(){
 async function changeColor(){
     color = await document.querySelector('.changeColor').value;
     box.material.color.set(color);
+    cicle.material.color.set(color);
+    Bar.material.color.set(color);
 }
 
 function getValues(object2create) {
-    let datas = document.querySelectorAll('.create');
-    color = datas[3].value;
 
     switch (object2create) {
         case 'Box':
-            const geometry = new THREE.BoxGeometry( datas[0].value, datas[1].value, datas[2].value );
+            let dataBox =  document.querySelectorAll('.createBox');
+            color = dataBox[3].value
+            const geometry = new THREE.BoxGeometry( dataBox[0].value, dataBox[1].value, dataBox[2].value );
             const material = new THREE.MeshBasicMaterial( { color: color } );
             cube = new THREE.Mesh( geometry, material );
             box = cube;
             scene.add( cube );
             break;
+
         case 'Cylinder':
-            geometry = new THREE.CylinderGeometry( datas[0].value, datas[1].value, datas[2].value, 1 );
-            material = new THREE.MeshBasicMaterial( { color: datas[3].value } );
-            cylinder = new THREE.Mesh( geometry, material );
-            scene.add( cylinder );
+            let datasCylinder=document.querySelectorAll('.dataCylinder');
+            color = datasCylinder[4].value;
+                const geometryCylinder = new THREE.CylinderGeometry( datasCylinder[0].value, datasCylinder[1].value, datasCylinder[2].value, datasCylinder[3].value );
+                const materialCylinder = new THREE.MeshBasicMaterial( {color: color} );
+                const cylinder = new THREE.Mesh( geometryCylinder, materialCylinder );
+                Bar=cylinder;
+                scene.add( cylinder );
     
                 break;
     
         case 'Sphere':
-    
-            geometry = new THREE.SphereGeometry( datas[0].value, datas[1].value, datas[2].value );
-            material = new THREE.MeshBasicMaterial( { color: datas[3].value } );
-            sphere = new THREE.Mesh( geometry, material );
+            let dataSphere = document.querySelectorAll('.createSphere');
+            color = dataSphere[3].value
+            const geometrySphere = new THREE.SphereGeometry( dataSphere[0].value, dataSphere[1].value, dataSphere[2].value );
+            const materialSphere = new THREE.MeshBasicMaterial( { color: color } );
+            sphere = new THREE.Mesh( geometrySphere, materialSphere );
+            circle = sphere;
             scene.add( sphere );
     
                 // code block

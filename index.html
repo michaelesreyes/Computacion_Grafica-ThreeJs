@@ -24,16 +24,24 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Create Objects</a>
                     <ul class="dropdown-menu" >
-                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Box</a></li>
-                        <li><a class="dropdown-item" href="#">Cylinder</a></li>
-                        <li><a class="dropdown-item" href="#">Sphere</a></li>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalBox">Box</a></li>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalCylinder">Cylinder</a></li>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalSphere">Sphere</a></li>
                     </ul>
                 </li>
                 <li>
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Changes color</a>
                     <ul class="dropdown-menu" >
-                        <input type="color" class="form-control form-control-color changeColor" value="#563d7c" title="Choose your color">
-                        <button onclick ="changeColor()" type="button" class="btn btn-primary">Create</button>
+                        <div class="container text-center">
+                            <div class="row">
+                                <div class="col">
+                                    <input type="color" class="form-control form-control-color changeColor" value="#563d7c" title="Choose your color">
+                                </div>
+                                <div class="col">
+                                    <button onclick ="changeColor()" type="button" class="btn btn-primary">Create</button>
+                                </div>
+                                </div>
+                            </div>
                     </ul>
                 </li>
             </ul>
@@ -41,7 +49,7 @@
     </nav>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalBox" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -50,17 +58,81 @@
             </div>
             <div class="modal-body">
                 <label for="form-control ancho" class="form-label">Ancho</label>
-                <input class="form-control ancho create" type="number" name="" id="Ancho" placeholder="x (Ancho)" title="Ancho">
+                <input class="form-control ancho createBox" type="number" name="" id="Ancho" placeholder="x (Ancho)" title="Ancho">
                 <label for="form-control alto" class="form-label">Alto</label>
-                <input class="form-control alto create" type="number" name="" id="Alto" placeholder="y (Alto)" title="Alto">
+                <input class="form-control alto createBox" type="number" name="" id="Alto" placeholder="y (Alto)" title="Alto">
                 <label for="form-control profundidad" class="form-label">Profundidad</label>
-                <input class="form-control profundidad create" type="number" name="" id="Profundidad" placeholder="z (Profundidad)" title="Profundidad">
+                <input class="form-control profundidad createBox" type="number" name="" id="Profundidad" placeholder="z (Profundidad)" title="Profundidad">
                 <label for="exampleColorInput" class="form-label">Color picker</label>
-                <input type="color" class="form-control form-control-color create" id="Color" value="#563d7c" title="Choose your color">
+                <input type="color" class="form-control form-control-color createBox" id="Color" value="#563d7c" title="Choose your color">
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button onclick ="getValues('Box')" type="button" class="btn btn-primary" data-bs-dismiss="modal">Create</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalCylinder" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Medidas</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                      <label for="recipient-name" class="col-form-label">radius top:</label>
+                      <input type="number" class="form-control dataCylinder" id="radiusTop" placeholder="Radius Top">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">radius bottom:</label>
+                        <input type="number" class="form-control dataCylinder" id="radiusBottom" placeholder="Radius Bottom">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">height:</label>
+                        <input type="number" class="form-control dataCylinder" id="Hiegth" placeholder="Heigth">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">number of segments:</label>
+                        <input type="number" class="form-control dataCylinder" id="nSegments" placeholder="Number of segments">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleColorInput" class="form-label">Color </label>
+                        <input type="color" class="form-control form-control-color dataCylinder" id="exampleColorInput" value="#563d7c" title="Choose your color" placeholder="Color">
+                    </div>
+                  </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" onclick="getValues('Cylinder')"class="btn btn-primary" data-bs-dismiss="modal">do it</button>
+            </div>
+        </div>
+        </div> 
+    </div>
+
+    <div class="modal fade" id="modalSphere" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Create a Sphere</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <label for="form-control ancho" class="form-label">Radio</label>
+                <input class="form-control ancho createSphere" type="number" name="" id="Ancho" placeholder="Radio" title="Ancho">
+                <label for="form-control alto" class="form-label">Anchura de los segmentos</label>
+                <input class="form-control alto createSphere" type="number" name="" id="Alto" placeholder="Ancho" title="Alto">
+                <label for="form-control profundidad" class="form-label">Altura de los segmentos</label>
+                <input class="form-control profundidad createSphere" type="number" name="" id="Profundidad" placeholder="Alto" title="Profundidad">
+                <label for="exampleColorInput" class="form-label">Color picker</label>
+                <input type="color" class="form-control form-control-color createSphere" id="Color" value="#563d7c" title="Choose your color">
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button onclick ="getValues('Sphere')" type="button" class="btn btn-primary" data-bs-dismiss="modal">Create</button>
             </div>
         </div>
         </div>
