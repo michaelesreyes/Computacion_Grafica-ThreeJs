@@ -24,9 +24,16 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Create Objects</a>
                     <ul class="dropdown-menu" >
-                        <li><button id ="objects2Create" class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" value="Box">Box</button></li>
-                        <li><button id ="objects2Create" class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" value="Cylinder">Cylinder</button></li>
-                        <li><button id ="objects2Create"class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" value="Sphere">Sphere</button></li>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Box</a></li>
+                        <li><a class="dropdown-item" href="#">Cylinder</a></li>
+                        <li><a class="dropdown-item" href="#">Sphere</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Changes color</a>
+                    <ul class="dropdown-menu" >
+                        <input type="color" class="form-control form-control-color changeColor" value="#563d7c" title="Choose your color">
+                        <button onclick ="changeColor()" type="button" class="btn btn-primary">Create</button>
                     </ul>
                 </li>
             </ul>
@@ -43,17 +50,17 @@
             </div>
             <div class="modal-body">
                 <label for="form-control ancho" class="form-label">Ancho</label>
-                <input class="form-control ancho" type="number" name="" id="Ancho" placeholder="x (Ancho)" title="Ancho">
-                <label for="form-control alto" class="form-label">Ancho</label>
-                <input class="form-control alto" type="number" name="" id="Alto" placeholder="y (Alto)" title="Alto">
-                <label for="form-control profundidad" class="form-label">Ancho</label>
-                <input class="form-control profundidad" type="number" name="" id="Profundidad" placeholder="z (Profundidad)" title="Profundidad">
+                <input class="form-control ancho create" type="number" name="" id="Ancho" placeholder="x (Ancho)" title="Ancho">
+                <label for="form-control alto" class="form-label">Alto</label>
+                <input class="form-control alto create" type="number" name="" id="Alto" placeholder="y (Alto)" title="Alto">
+                <label for="form-control profundidad" class="form-label">Profundidad</label>
+                <input class="form-control profundidad create" type="number" name="" id="Profundidad" placeholder="z (Profundidad)" title="Profundidad">
                 <label for="exampleColorInput" class="form-label">Color picker</label>
-                <input type="color" class="form-control form-control-color" id="Color" value="#563d7c" title="Choose your color">
+                <input type="color" class="form-control form-control-color create" id="Color" value="#563d7c" title="Choose your color">
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button onclick ="getValues({object2create})" type="button" class="btn btn-primary" data-bs-dismiss="modal">Create</button>
+            <button onclick ="getValues('Box')" type="button" class="btn btn-primary" data-bs-dismiss="modal">Create</button>
             </div>
         </div>
         </div>

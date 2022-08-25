@@ -18,7 +18,10 @@ var scene = null, //La composicion de todos los objetos de la escena (The compos
     camera = null, //La camara que se utiliza para ver la escena (let met to see)
     renderer = null,//El renderizador que se utiliza para renderizar la escena (representar las imagenes), (let me represent with digital image)
     controls = null, //El controlador que se utiliza para controlar la camara (can movements)
-    cube = null; //El cubo que se utiliza para representar la escena (representar la escena)
+    cube = null,
+    box = null,
+    sphere= null,
+    color = null; //El cubo que se utiliza para representar la escena (representar la escena)
 
 function start(){
     initScene();
@@ -71,43 +74,40 @@ function initScene(){
     window.addEventListener( 'resize', onWindowResize, false );
 }
 
-function getValues(objects2Create){
+async function changeColor(){
+    color = await document.querySelector('.changeColor').value;
+    box.material.color.set(color);
+}
 
-    
+function getValues(object2create) {
+    let datas = document.querySelectorAll('.create');
+    color = datas[3].value;
 
-    let datas = document.querySelectorAll('input');
-
-    switch (objects2Create) {
-
+    switch (object2create) {
         case 'Box':
-
             const geometry = new THREE.BoxGeometry( datas[0].value, datas[1].value, datas[2].value );
-            const material = new THREE.MeshBasicMaterial( { color: datas[3].value } );
+            const material = new THREE.MeshBasicMaterial( { color: color } );
             cube = new THREE.Mesh( geometry, material );
+            box = cube;
             scene.add( cube );
-
-            scene.add( cube );
-
             break;
-
         case 'Cylinder':
-
             geometry = new THREE.CylinderGeometry( datas[0].value, datas[1].value, datas[2].value, 1 );
             material = new THREE.MeshBasicMaterial( { color: datas[3].value } );
-            const cylinder = new THREE.Mesh( geometry, material );
+            cylinder = new THREE.Mesh( geometry, material );
             scene.add( cylinder );
-
-            break;
-
+    
+                break;
+    
         case 'Sphere':
-
+    
             geometry = new THREE.SphereGeometry( datas[0].value, datas[1].value, datas[2].value );
             material = new THREE.MeshBasicMaterial( { color: datas[3].value } );
-            const sphere = new THREE.Mesh( geometry, material );
+            sphere = new THREE.Mesh( geometry, material );
             scene.add( sphere );
-
+    
+                // code block
             break;
-
         default:
             break;
     }
@@ -116,9 +116,6 @@ function getValues(objects2Create){
 function animate(){
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
-
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
 }
 
 start();
